@@ -1,7 +1,6 @@
 <h2>Create / Edit Course</h2>
-
-<form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
-  <div class="app-plate">
+<div class="app-plate">
+  <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
     <div class="course">
       <h3>Main Info</h3>
       <div class="form__control">
@@ -149,9 +148,10 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="course__form__action">
-    <app-button buttonText="CANCEL"></app-button>
-    <app-button buttonText="CREATE COURSE" type="submit"></app-button>
-  </div>
-</form>
+
+    <div class="course__form__action">
+      <app-button buttonText="CANCEL"></app-button>
+      <app-button buttonText="CREATE COURSE" type="submit"></app-button>
+    </div>
+  </form>
+</div>
