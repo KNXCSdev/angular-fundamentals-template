@@ -1,0 +1,9 @@
+<app-course-card
+  *ngFor="let course of courses"
+  [course]="course"
+  [editable]="editable"
+  (clickOnShow)="onShow(course)"
+>
+  <app-button iconName="pen" (click)="onEdit(course)"></app-button>
+  <app-button iconName="trash" (click)="onDelete(course)"></app-button>
+</app-course-card>

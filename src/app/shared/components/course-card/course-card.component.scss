@@ -20,6 +20,11 @@
     }
   }
 
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
   &__info {
     flex: 1;
     display: flex;
@@ -29,6 +34,12 @@
 
     &-text {
       margin-top: 16px;
+    }
+
+    &-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
   }
 }

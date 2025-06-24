@@ -1,22 +1,43 @@
-<app-header></app-header>
+<app-header>
+  <ng-container *ngIf="loggedIn">
+    <span>Harry Potter</span>
+    <app-button buttonText="Register"></app-button>
+  </ng-container>
+  <app-button *ngIf="!loggedIn" buttonText="Login"></app-button>
+</app-header>
+
 <div class="app-root">
   <!-- Search component -->
-  <!--<app-search></app-search>-->
+  <!-- <app-search></app-search> -->
 
   <!-- Info component -->
-  <!--<app-info></app-info>-->
+  <!-- <app-info
+    title="Your List Is Empty"
+    text="Please use 'Add New Course' button to add your first course"
+  >
+    <app-button buttonText="ADD NEW COURSE"></app-button>
+  </app-info> -->
 
-  <!-- Course Card component -->
-  <!--<app-course-card></app-course-card>-->
+  <!-- Course List Component -->
+  <!-- <app-courses-list
+    [courses]="courses"
+    [editable]="true"
+    (showCourse)="handleShow($event)"
+    (editCourse)="handleEdit($event)"
+    (deleteCourse)="handleDelete($event)"
+  ></app-courses-list> -->
+
+  <!-- Course Info Component -->
+  <!-- <app-course-info [course]="selectedCourse"></app-course-info> -->
 
   <!-- Login Form component -->
-  <!--<app-login-form></app-login-form>-->
+  <!-- <app-login-form></app-login-form> -->
 
   <!-- Login Form component -->
-  <!--<app-registration-form></app-registration-form>-->
+  <!-- <app-registration-form></app-registration-form> -->
 
   <!-- Login Form component -->
-  <!--<app-course-form></app-course-form>-->
+  <app-course-form></app-course-form>
 
   <!-- Modal component -->
   <!-- <app-modal [message]="'Message'" [title]="'Title'" [okButtonText]="'Ok'" [cancelButtonText]="'Cancel'"></app-modal> -->

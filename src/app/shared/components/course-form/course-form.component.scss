@@ -1,7 +1,13 @@
-@import 'src/app/shared/styles/styles';
+@import "src/app/shared/styles/styles";
 
 .course {
- min-width: 60vw;
+  min-width: 50vw;
+
+  &__input__list {
+    border: none;
+    background: none;
+    width: 150px;
+  }
 
   &__flex {
     display: flex;
@@ -10,6 +16,14 @@
 
     & input {
       flex: 1;
+    }
+
+    &__2 {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      flex: 1;
+      justify-content: center;
     }
 
     & app-button {
@@ -21,12 +35,41 @@
     }
   }
 
+  &__main {
+    flex: 1.3;
+  }
+
+  &__form {
+    &__action {
+      display: flex;
+      width: 100%;
+      margin-top: 2rem;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-left: 66px;
+    }
+  }
+
   &__authors {
     margin-top: 8px;
     display: flex;
+    flex-direction: column;
+    gap: 10px;
 
     &-item {
       margin-right: 10px;
+    }
+
+    &__flex {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    &__buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
   }
 
