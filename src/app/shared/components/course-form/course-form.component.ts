@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { FaIconLibrary } from "@fortawesome/angular-fontawesome";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 
@@ -17,6 +17,10 @@ export class CourseFormComponent implements OnInit {
   submitted: boolean = false;
 
   ngOnInit(): void {
+    this.initializeForm();
+  }
+
+  private initializeForm(): void {
     this.courseForm = this.fb.group({
       title: ["", [Validators.required, Validators.minLength(2)]],
       description: ["", [Validators.required, Validators.minLength(2)]],
@@ -30,19 +34,19 @@ export class CourseFormComponent implements OnInit {
   }
 
   get authors(): FormArray {
-    return this.courseForm.get("authors") as FormArray;
+    return this.courseForm?.get("authors") as FormArray;
   }
 
   get courseAuthors(): FormArray {
-    return this.courseForm.get("courseAuthors") as FormArray;
+    return this.courseForm?.get("courseAuthors") as FormArray;
   }
 
-  get newAuthorControl() {
-    return this.courseForm.get("newAuthor.author");
+  get newAuthorControl(): AbstractControl | null {
+    return this.courseForm?.get("newAuthor.author");
   }
 
   get duration(): number {
-    return this.courseForm.get("duration")?.value;
+    return this.courseForm?.get("duration")?.value;
   }
 
   addCourseAuthor(author: { id: string; name: string }, index: number): void {
