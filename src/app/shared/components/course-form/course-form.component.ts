@@ -8,45 +8,37 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
   templateUrl: "./course-form.component.html",
   styleUrls: ["./course-form.component.scss"],
 })
-export class CourseFormComponent implements OnInit {
+export class CourseFormComponent {
   constructor(public fb: FormBuilder, public library: FaIconLibrary) {
     library.addIconPacks(fas);
   }
-  courseForm!: FormGroup;
+  courseForm = this.fb.group({
+    title: ["", [Validators.required, Validators.minLength(2)]],
+    description: ["", [Validators.required, Validators.minLength(2)]],
+    duration: ["", [Validators.required, Validators.min(0)]],
+    authors: this.fb.array([]),
+    courseAuthors: this.fb.array([]),
+    newAuthor: this.fb.group({
+      author: ["", [Validators.pattern(/^[a-zA-Z0-9 ]+$/), Validators.minLength(2)]],
+    }),
+  });
   // Use the names `title`, `description`, `author`, 'authors' (for authors list), `duration` for the form controls.
   submitted: boolean = false;
 
-  ngOnInit(): void {
-    this.initializeForm();
-  }
-
-  private initializeForm(): void {
-    this.courseForm = this.fb.group({
-      title: ["", [Validators.required, Validators.minLength(2)]],
-      description: ["", [Validators.required, Validators.minLength(2)]],
-      duration: ["", [Validators.required, Validators.min(0)]],
-      authors: this.fb.array([]),
-      courseAuthors: this.fb.array([]),
-      newAuthor: this.fb.group({
-        author: ["", [Validators.pattern(/^[a-zA-Z0-9 ]+$/), Validators.minLength(2)]],
-      }),
-    });
-  }
-
   get authors(): FormArray {
-    return this?.courseForm?.get("authors") as FormArray;
+    return this.courseForm.get("authors") as FormArray;
   }
 
   get courseAuthors(): FormArray {
-    return this?.courseForm?.get("courseAuthors") as FormArray;
+    return this.courseForm.get("courseAuthors") as FormArray;
   }
 
   get newAuthorControl(): AbstractControl | null {
-    return this?.courseForm?.get("newAuthor.author");
+    return this.courseForm.get("newAuthor.author");
   }
 
-  get duration(): number {
-    return this?.courseForm?.get("duration")?.value;
+  get duration() {
+    return this.courseForm.get("duration")?.value;
   }
 
   addCourseAuthor(author: { id: string; name: string }, index: number): void {
@@ -80,11 +72,11 @@ export class CourseFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if (this.courseForm.invalid) {
+    if (this.courseForm?.invalid) {
       this.courseForm.markAllAsTouched();
       return;
     }
 
-    console.log("Submitted data:", this.courseForm.value);
+    console.log("Submitted data:", this.courseForm?.value);
   }
 }
