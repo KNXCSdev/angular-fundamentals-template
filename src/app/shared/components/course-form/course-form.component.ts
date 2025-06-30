@@ -37,8 +37,9 @@ export class CourseFormComponent {
     return this.courseForm.get("newAuthor.author");
   }
 
-  get duration() {
-    return this.courseForm.get("duration")?.value;
+  get duration(): number {
+    const value = this.courseForm.get("duration")?.value;
+    return Number(value) || 0;
   }
 
   addCourseAuthor(author: { id: string; name: string }, index: number): void {
