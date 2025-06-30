@@ -34,19 +34,19 @@ export class CourseFormComponent implements OnInit {
   }
 
   get authors(): FormArray {
-    return this.courseForm?.get("authors") as FormArray;
+    return this?.courseForm?.get("authors") as FormArray;
   }
 
   get courseAuthors(): FormArray {
-    return this.courseForm?.get("courseAuthors") as FormArray;
+    return this?.courseForm?.get("courseAuthors") as FormArray;
   }
 
   get newAuthorControl(): AbstractControl | null {
-    return this.courseForm?.get("newAuthor.author");
+    return this?.courseForm?.get("newAuthor.author");
   }
 
   get duration(): number {
-    return this.courseForm?.get("duration")?.value;
+    return this?.courseForm?.get("duration")?.value;
   }
 
   addCourseAuthor(author: { id: string; name: string }, index: number): void {

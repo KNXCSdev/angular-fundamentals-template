@@ -1,6 +1,7 @@
 <h2>Create / Edit Course</h2>
-<div class="app-plate">
-  <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+
+<form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+  <div class="app-plate">
     <div class="course">
       <h3>Main Info</h3>
       <div class="form__control">
@@ -11,12 +12,12 @@
           id="titleErrorMessage"
           class="text-danger"
           *ngIf="
-            courseForm.get('title')?.invalid && (courseForm.get('title')?.touched || submitted)
+            courseForm?.get('title')?.invalid && (courseForm?.get('title')?.touched || submitted)
           "
-          ><ng-container *ngIf="courseForm.get('title')?.errors?.['required']"
+          ><ng-container *ngIf="courseForm?.get('title')?.errors?.['required']"
             >Title is required.</ng-container
           >
-          <ng-container *ngIf="courseForm.get('title')?.errors?.['minlength']"
+          <ng-container *ngIf="courseForm?.get('title')?.errors?.['minlength']"
             >Text length should be at least 2 characters</ng-container
           ></span
         >
@@ -36,14 +37,14 @@
           id="descriptionErrorMessage"
           class="text-danger"
           *ngIf="
-            courseForm.get('description')?.invalid &&
-            (courseForm.get('description')?.touched || submitted)
+            courseForm?.get('description')?.invalid &&
+            (courseForm?.get('description')?.touched || submitted)
           "
         >
-          <ng-container *ngIf="courseForm.get('description')?.errors?.['required']"
+          <ng-container *ngIf="courseForm?.get('description')?.errors?.['required']"
             >Description is required.</ng-container
           >
-          <ng-container *ngIf="courseForm.get('description')?.errors?.['minlength']"
+          <ng-container *ngIf="courseForm?.get('description')?.errors?.['minlength']"
             >Description should be at least 2 characters.</ng-container
           ></span
         >
@@ -67,14 +68,14 @@
               id="durationErrorMessage"
               class="text-danger"
               *ngIf="
-                courseForm.get('duration')?.invalid &&
-                (courseForm.get('duration')?.touched || submitted)
+                courseForm?.get('duration')?.invalid &&
+                (courseForm?.get('duration')?.touched || submitted)
               "
             >
-              <ng-container *ngIf="courseForm.get('duration')?.errors?.['required']"
+              <ng-container *ngIf="courseForm?.get('duration')?.errors?.['required']"
                 >Duration is required.</ng-container
               >
-              <ng-container *ngIf="courseForm.get('duration')?.errors?.['min']"
+              <ng-container *ngIf="courseForm?.get('duration')?.errors?.['min']"
                 >Duration should be not less than 0.</ng-container
               >
             </span>
@@ -101,14 +102,14 @@
               id="authorErrorMessage"
               class="text-danger"
               *ngIf="
-                courseForm.get('newAuthor.author')?.invalid &&
-                (courseForm.get('newAuthor.author')?.touched || submitted)
+                courseForm?.get('newAuthor.author')?.invalid &&
+                (courseForm?.get('newAuthor.author')?.touched || submitted)
               "
             >
-              <ng-container *ngIf="courseForm.get('newAuthor.author')?.errors?.['minlength']"
+              <ng-container *ngIf="courseForm?.get('newAuthor.author')?.errors?.['minlength']"
                 >Author name should be at least 2 characters</ng-container
               >
-              <ng-container *ngIf="courseForm.get('newAuthor.author')?.errors?.['pattern']"
+              <ng-container *ngIf="courseForm?.get('newAuthor.author')?.errors?.['pattern']"
                 >New author should contain only latin letters and numbers.</ng-container
               >
             </span>
@@ -148,10 +149,9 @@
         </div>
       </div>
     </div>
-
-    <div class="course__form__action">
-      <app-button buttonText="CANCEL"></app-button>
-      <app-button buttonText="CREATE COURSE" type="submit"></app-button>
-    </div>
-  </form>
-</div>
+  </div>
+  <div class="course__form__action">
+    <app-button buttonText="CANCEL"></app-button>
+    <app-button buttonText="CREATE COURSE" type="submit"></app-button>
+  </div>
+</form>
